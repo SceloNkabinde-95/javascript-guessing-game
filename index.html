@@ -72,11 +72,21 @@
 		let resetButton;
 
 		
+		const userGuesses = []; // Stores all guesses
 
 		
 		function checkGuess() {
 
 		const userGuess = Number(guessField.value);
+
+		// Store each guess for the user to see:
+
+		// Store the guess in the array
+		userGuesses.push(userGuess);
+		
+		// Display the array
+		guesses.textContent = 'Previous guesses: ' + userGuesses.join(' ');
+
 		
 		// Determining when the game is over
 
