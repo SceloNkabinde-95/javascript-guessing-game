@@ -83,9 +83,11 @@
 
 		const isRepeat = userGuesses.includes(userGuess); /*checks if input exits in array of previous guesses*/
 
+		if (userGuess !== randomNumber)
+		{
 		// Store each guess for the user to see:
 
-			// 1. show / hide the repeat message
+			// a) show / hide the repeat message
 			if (isRepeat) {
 				repeatGuess.textContent = "Oops! That's a repeated number. Unfortunately that'll cost you a guess";
 				repeatGuess.style.display = 'block';
@@ -93,12 +95,23 @@
 				repeatGuess.style.display = 'none';
 			}
 
-			// 2. store the guess (we keep it even if it’s a repeat so the list is chronological)
+			// b) store the guess (we keep it even if it’s a repeat so the list is chronological)
 			userGuesses.push(userGuess);
 
-			// 3. display a list of all previous guesses
+			// c) display a list of all previous guesses
 			guesses.textContent = 'Previous guesses: ' + userGuesses.join(' ');
 
+		// Determine if the guess is higher or lower than the random number:
+
+			if (userGuess > randomNumber) {
+				lowOrHi.textContent = "Your guess was higher than the random number"
+			}
+
+			else if (userGuess < randomNumber) {
+				lowOrHi.textContent = "Your guess was lower than the random number"
+			}
+
+		}
 
 		// Determining when the game is over
 
@@ -125,8 +138,6 @@
 		}
 
 		guessSubmit.addEventListener('click', checkGuess);
-
-
 
 	</script>
 </body>
