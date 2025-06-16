@@ -46,6 +46,7 @@
 
 		<div class="resultParas">
 			<p class="guesses"></p>
+			<p class="repeatGuess"></p>
 			<p class="lastResult"></p>
 			<p class="testGameOver"></p>
 			<p class="lowOrHi"></p>
@@ -64,6 +65,7 @@
 		const guessField = document.querySelector(".guessField");
 
 		const guesses = document.querySelector(".guesses");
+		const repeatGuess= document.querySelector(".repeatGuess");
 		const lastResult = document.querySelector(".lastResult");
 		const testGameOver = document.querySelector(".testGameOver");
 		const lowOrHi = document.querySelector(".lowOrHi");
@@ -79,32 +81,42 @@
 
 		const userGuess = Number(guessField.value);
 
+		const isRepeat = userGuesses.includes(userGuess); /*checks if input exits in array of previous guesses*/
+
 		// Store each guess for the user to see:
 
-		// Store the guess in the array
-		userGuesses.push(userGuess);
-		
-		// Display the array
-		guesses.textContent = 'Previous guesses: ' + userGuesses.join(' ');
-
-		
-		// Determining when the game is over
-
-		// a) if the guess is correct the game is over
-
-		if (userGuess === randomNumber) {
-			lastResult.textContent = "You guessed... Correctly!";
-			lastResult.style.backgroundColor = "green";
-			lowOrHi.textContent = "";
-			testGameOver.textContent = "Ahhh... The game is over now!"
+			// 1. show / hide the repeat message
+			if (isRepeat) {
+				repeatGuess.textContent = "Oops! That's a repeated number. Unfortunately that'll cost you a guess";
+				repeatGuess.style.display = 'block';
+			} else {
+				repeatGuess.style.display = 'none';
 			}
 
-		// b) if the guess counter reaches 10 then the game is over
+			// 2. store the guess (we keep it even if it’s a repeat so the list is chronological)
+			userGuesses.push(userGuess);
 
-		if (guessCount === 10) {
-	
-			testGameOver.textContent = "That was 10 tries already? Wow! Time flies when we're having fun. Unfortunatley the game is over now!"
-		}
+			// 3. display a list of all previous guesses
+			guesses.textContent = 'Previous guesses: ' + userGuesses.join(' ');
+
+
+		// Determining when the game is over
+
+			// a) if the guess is correct the game is over
+
+			if (userGuess === randomNumber) {
+				lastResult.textContent = "You guessed... Correctly!";
+				lastResult.style.backgroundColor = "green";
+				lowOrHi.textContent = "";
+				testGameOver.textContent = "Ahhh... The game is over now!"
+				}
+
+			// b) if the guess counter reaches 10 then the game is over
+
+			if (guessCount === 10) {
+		
+				testGameOver.textContent = "That was 10 tries already? Wow! Time flies when we're having fun. Unfortunatley the game is over now!"
+			}
 
 		guessCount++;
 		guessField.value = '';
