@@ -71,17 +71,35 @@
 		let guessCount = 1;
 		let resetButton;
 
+		
+
+		
+		function checkGuess() {
+
+		const userGuess = Number(guessField.value);
+		
 		// Determining when the game is over
 
 		// a) if the guess is correct the game is over
-		function checkGuess() {
-			const userGuess = Number(guessField.value);
+
 		if (userGuess === randomNumber) {
 			lastResult.textContent = "You guessed... Correctly!";
 			lastResult.style.backgroundColor = "green";
 			lowOrHi.textContent = "";
-			testGameOver.textContent = "Ahhh... Now the game is over!"
+			testGameOver.textContent = "Ahhh... The game is over now!"
 			}
+
+		// b) if the guess counter reaches 10 then the game is over
+
+		if (guessCount === 10) {
+	
+			testGameOver.textContent = "That was 10 tries already? Wow! Time flies when we're having fun. Unfortunatley the game is over now!"
+		}
+
+		guessCount++;
+		guessField.value = '';
+		guessField.focus();
+
 		}
 
 		guessSubmit.addEventListener('click', checkGuess);
