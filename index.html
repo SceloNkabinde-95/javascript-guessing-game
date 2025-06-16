@@ -67,8 +67,8 @@
 		const guesses = document.querySelector(".guesses");
 		const repeatGuess= document.querySelector(".repeatGuess");
 		const lastResult = document.querySelector(".lastResult");
-		const testGameOver = document.querySelector(".testGameOver");
 		const lowOrHi = document.querySelector(".lowOrHi");
+		const testGameOver = document.querySelector(".testGameOver");
 
 		let guessCount = 1;
 		let resetButton;
@@ -121,14 +121,16 @@
 				lastResult.textContent = "You guessed... Correctly!";
 				lastResult.style.backgroundColor = "green";
 				lowOrHi.textContent = "";
-				testGameOver.textContent = "Ahhh... The game is over now!"
+				testGameOver.textContent = "Ahhh... The game is over now!";
+				setGameOver()
 				}
 
 			// b) if the guess counter reaches 10 then the game is over
 
 			if (guessCount === 10) {
 		
-				testGameOver.textContent = "That was 10 tries already? Wow! Time flies when we're having fun. Unfortunatley the game is over now!"
+				testGameOver.textContent = "That was 10 tries already? Wow! Time flies when we're having fun. Unfortunatley the game is over now!";
+				setGameOver()
 			}
 
 		guessCount++;
@@ -138,6 +140,33 @@
 		}
 
 		guessSubmit.addEventListener('click', checkGuess);
+
+
+
+		function setGameOver() {
+		guessField.disabled = true;
+		guessSubmit.disabled = true;
+		resetButton = document.createElement('button');
+		resetButton.textContent = 'Start new game';
+		document.body.appendChild(resetButton);
+		resetButton.addEventListener('click', resetGame);
+		}
+
+		function resetGame() {
+		guessCount = 1;
+		const resetParas = document.querySelectorAll('.resultParas p');
+		for (const resetPara of resetParas) {
+		resetPara.textContent = '';
+			}
+		}
+
+		resetButton.parentNode.removeChild(resetButton);
+		guessField.disabled = false;
+		guessSubmit.disabled = false;
+		guessField.value = '';
+		guessField.focus();
+		lastResult.style.backgroundColor = 'white';
+		randomNumber = Math.floor(Math.random() * 100) + 1;
 
 	</script>
 </body>
