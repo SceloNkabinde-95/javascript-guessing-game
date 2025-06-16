@@ -58,8 +58,7 @@
 
 		// Declare useful variables
 
-		let randomNumber = 10;
-		// Math.floor(Math.random() * 100) + 1;
+		let randomNumber = Math.floor(Math.random() * 100) + 1;
 
 		const guessSubmit = document.querySelector(".guessSubmit");
 		const guessField = document.querySelector(".guessField");
@@ -153,12 +152,12 @@
 		}
 
 		function resetGame() {
-		guessCount = 1;
+		// guessCount = 1;
 		const resetParas = document.querySelectorAll('.resultParas p');
 		for (const resetPara of resetParas) {
 		resetPara.textContent = '';
 			}
-		}
+		
 
 		resetButton.parentNode.removeChild(resetButton);
 		guessField.disabled = false;
@@ -167,6 +166,8 @@
 		guessField.focus();
 		lastResult.style.backgroundColor = 'white';
 		randomNumber = Math.floor(Math.random() * 100) + 1;
+
+		}
 
 	</script>
 </body>
