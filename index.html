@@ -54,11 +54,14 @@
 	</div>
 
 	<script>
-		let randomNumber = Math.floor(Math.random() * 100) + 1;
+
+		// Declare useful variables
+
+		let randomNumber = 10;
+		// Math.floor(Math.random() * 100) + 1;
 
 		const guessSubmit = document.querySelector(".guessSubmit");
 		const guessField = document.querySelector(".guessField");
-		const userGuess = Number(guessField.value);
 
 		const guesses = document.querySelector(".guesses");
 		const lastResult = document.querySelector(".lastResult");
@@ -67,6 +70,24 @@
 
 		let guessCount = 1;
 		let resetButton;
+
+		// Determining when the game is over
+
+		// a) if the guess is correct the game is over
+		function checkGuess() {
+			const userGuess = Number(guessField.value);
+		if (userGuess === randomNumber) {
+			lastResult.textContent = "You guessed... Correctly!";
+			lastResult.style.backgroundColor = "green";
+			lowOrHi.textContent = "";
+			testGameOver.textContent = "Ahhh... Now the game is over!"
+			}
+		}
+
+		guessSubmit.addEventListener('click', checkGuess);
+
+
+
 	</script>
 </body>
 </html>
