@@ -84,6 +84,12 @@
 
 		if (userGuess !== randomNumber)
 		{
+		
+		// Display a painful wrong message:
+		lastResult.textContent = "You guessed... poorly!";
+		lastResult.style.backgroundColor = "red";
+
+
 		// Store each guess for the user to see:
 
 			// a) show / hide the repeat message
