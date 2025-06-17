@@ -13,6 +13,8 @@ While the exercises updates this by using the counter of 1 and then ensuring tha
 
 With the guesses stored in an array, I am able to check if a new guess is part of the list of the previous guesses which if it is, the webpage displays a message about this.
 
+2) I use a validation to ensure the input is between 1 and 100 and is an integer, otherwise the user is shown a message while keeping the counter moving and showing previous guesses.
+
 2) In setting the game over functionality of the game, I also insert a message regarding the game being over that is different from the original game.
 
 3) When the game is over due to the guess counter having reached 10, I remove some of the code as it feels redundant since it's accounted for by simply not adding code.
