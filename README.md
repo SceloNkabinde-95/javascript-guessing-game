@@ -28,3 +28,10 @@ I am currently learning about javascript and this is really a nice exercise if y
 However, some credit is appreciated if you use any of my editions.
 
 Happy programming :)
+
+# Where to find the live webpage
+
+Simply slip this monstrousity into your browser and it'll take you there:
+
+https://scelonkabinde-95.github.io/javascript-guessing-game/
+
