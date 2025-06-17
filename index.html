@@ -34,7 +34,7 @@
 		<h1>Number Guessing Game</h1>
 		<br>
 		<p>
-			We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your
+			We have selected a random integer between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your
 			guess was too high or too low.
 		</p>
 
@@ -82,7 +82,17 @@
 
 		const isRepeat = userGuesses.includes(userGuess); /*checks if input exits in array of previous guesses*/
 
-		if (userGuess !== randomNumber)
+		if (userGuess > 100 || userGuess < 1 || Number.isInteger(userGuess) === false) {
+				lastResult.textContent = "Oops that number is not between 1 and 100, nor is it an integer. Please try again with a valid input";
+				lastResult.style.backgroundColor = "orange";
+
+				guesses.textContent = "";
+				repeatGuess.textContent = "";
+				lowOrHi.textContent = "";
+				testGameOver.textContent = "";
+			}
+
+		else if (userGuess !== randomNumber)
 		{
 		
 		// Display a painful wrong message:
