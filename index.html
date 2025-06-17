@@ -86,7 +86,13 @@
 				lastResult.textContent = "Oops that number is not between 1 and 100, nor is it an integer. Please try again with a valid input";
 				lastResult.style.backgroundColor = "orange";
 
-				guesses.textContent = "";
+			// b) store the guess (we keep it even if it’s a repeat so the list is chronological)
+			userGuesses.push(userGuess);
+
+			// c) display a list of all previous guesses
+			guesses.textContent = 'Previous guesses: ' + userGuesses.join(' ');
+
+			
 				repeatGuess.textContent = "";
 				lowOrHi.textContent = "";
 				testGameOver.textContent = "";
